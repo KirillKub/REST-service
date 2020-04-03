@@ -2,7 +2,7 @@ const uuid = require('uuid');
 
 class Column {
   constructor({
-    id = parseInt(Math.random() * 10, 10),
+    id = uuid(),
     title = 'TITLE',
     order = parseInt(Math.random() * 10, 10)
   } = {}) {
@@ -20,7 +20,7 @@ class Board {
   } = {}) {
     this.id = id;
     this.title = title;
-    this.columns = columns;
+    this.columns = columns.map(item => new Column(item));
   }
 }
 
