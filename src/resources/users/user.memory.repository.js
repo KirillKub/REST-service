@@ -6,5 +6,6 @@ const getAll = async () => {
 };
 
 const users = [new User(), new User(), new User(), new User(), new User()];
+const usersID = users.map(item => item.id);
 
-module.exports = { getAll, users };
+module.exports = { getAll, usersID };

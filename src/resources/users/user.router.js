@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require('./user.model');
 const usersService = require('./user.service');
+const tasksService = require('../tasks/task.service');
 
 router.route('/').get(async (req, res) => {
   const users = await usersService.getAll();
@@ -31,8 +32,12 @@ router.route('/:id').put(async (req, res) => {
 
 router.route('/:id').delete(async (req, res) => {
   const users = await usersService.getAll();
+  const tasks = await tasksService.getAllTasks();
   const id = req.params.id;
-  users.splice(users.indexOf(users.find(item => item.id === id)), 1);
+  const index = users.indexOf(users.find(item => item.id === id));
+  const newTasks = tasks.filter(item => item.userID !== users[index].id);
+  users.splice(index, 1);
+  tasks.splice(0, tasks.length, newTasks);
   res.json(users);
 });
 

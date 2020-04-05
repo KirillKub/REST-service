@@ -6,5 +6,6 @@ const getAllBoards = async () => {
 };
 
 const boards = [new Board(), new Board(), new Board()];
+const boardsID = boards.map(item => item.id);
 
-module.exports = { getAllBoards };
+module.exports = { getAllBoards, boardsID };
