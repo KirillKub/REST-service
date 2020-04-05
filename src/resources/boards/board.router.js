@@ -42,7 +42,7 @@ router.route('/:id').delete(async (req, res) => {
     const newTasks = tasks.filter(item => item.boardId !== boards[index].id);
     tasks.splice(0, tasks.length, ...newTasks);
     boards.splice(index, 1);
-    res.json(tasks);
+    res.json(boards);
   }
 });
 
