@@ -39,10 +39,10 @@ router.route('/:id').delete(async (req, res) => {
   const index = boards.indexOf(boards.find(item => item.id === id));
   if (index === -1) res.status(404).json('Not found');
   else {
-    const newTasks = tasks.filter(item => item.boardID !== boards[index].id);
-    tasks.splice(0, tasks.length, newTasks);
+    const newTasks = tasks.filter(item => item.boardId !== boards[index].id);
+    tasks.splice(0, tasks.length, ...newTasks);
     boards.splice(index, 1);
-    res.json(boards);
+    res.json(tasks);
   }
 });
 

@@ -35,10 +35,13 @@ router.route('/:id').delete(async (req, res) => {
   const tasks = await tasksService.getAllTasks();
   const id = req.params.id;
   const index = users.indexOf(users.find(item => item.id === id));
-  const newTasks = tasks.filter(item => item.userID !== users[index].id);
+  const newTasks = tasks.map(item => {
+    if (item.userId === users[index].id) item.userId = null;
+    return item;
+  });
   users.splice(index, 1);
-  tasks.splice(0, tasks.length, newTasks);
-  res.json(users);
+  tasks.splice(0, tasks.length, ...newTasks);
+  res.json(tasks);
 });
 
 module.exports = router;

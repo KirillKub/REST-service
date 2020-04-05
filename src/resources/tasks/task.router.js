@@ -5,20 +5,21 @@ const tasksService = require('./task.service');
 router.route('/:id/tasks').get(async (req, res) => {
   const tasks = await tasksService.getAllTasks();
   const id = req.params.id;
-  const tasksByID = tasks.filter(item => item.boardId === id) || [];
-  if (!tasksByID.length) res.json(['undefined']);
-  else res.json(tasksByID.map(Task.toResponse));
+  const tasksByID = tasks.filter(item => item.boardId === id);
+  res.json(tasksByID);
 });
 
 router.route('/:id/tasks/:taskID').get(async (req, res) => {
   const tasks = await tasksService.getAllTasks();
   const boardID = req.params.id;
   const taskID = req.params.taskID;
+  const isTask = tasks.find(item => item.id === taskID);
   const element = tasks.find(
     item => item.boardId === boardID && item.id === taskID
   );
+  if (!isTask) res.status(404).json('Not found');
   if (!element) res.json('undefined');
-  else res.json(Task.toResponse(element));
+  res.json(element);
 });
 
 router.route('/:id/tasks').post(async (req, res) => {
@@ -39,11 +40,8 @@ router.route('/:id/tasks/:taskID').put(async (req, res) => {
     tasks.find(item => item.boardId === boardID && item.id === taskID)
   );
   const task = new Task(req.body);
-  task.boardId = req.params.id;
-  task.columnId = null;
-  task.userId = null;
   tasks[index] = task;
-  res.json(tasks.map(Task.toResponse));
+  res.json(Task.toResponse(task));
 });
 
 router.route('/:id/tasks/:taskID').delete(async (req, res) => {
