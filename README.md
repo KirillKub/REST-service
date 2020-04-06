@@ -1,5 +1,3 @@
-# Для проверяющих,линтер удалил лишние пробелы в файле с тестами(test/e2e/test/users.test.js ),сам ничего не менял,все также как и в темплейте, [ссылка на коммит с изменениями](https://github.com/KirillKub/REST-service/commit/6b6c33a44866e2a05cbff38748bf91941e33e7a7#diff-6242c6756a7205ce1f11b199eafdad4b)
-
 # RS School REST service
 
 ## Prerequisites
