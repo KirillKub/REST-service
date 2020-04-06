@@ -13,12 +13,10 @@ router.route('/:id/tasks/:taskID').get(async (req, res) => {
   const tasks = await tasksService.getAllTasks();
   const boardID = req.params.id;
   const taskID = req.params.taskID;
-  const isTask = tasks.find(item => item.id === taskID);
   const element = tasks.find(
     item => item.boardId === boardID && item.id === taskID
   );
-  if (!isTask) res.status(404).json('Not found');
-  if (!element) res.json('undefined');
+  if (!element) res.status(404).json('Not found');
   res.json(element);
 });
 
@@ -51,8 +49,8 @@ router.route('/:id/tasks/:taskID').delete(async (req, res) => {
   const index = tasks.indexOf(
     tasks.find(item => item.boardId === boardID && item.id === taskID)
   );
-  if (index > 0) tasks.splice(index, 1);
-  res.json('The task has been deleted');
+  if (index >= 0) tasks.splice(index, 1);
+  res.json(tasks);
 });
 
 module.exports = router;
