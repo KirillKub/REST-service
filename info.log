@@ -1,0 +1,124 @@
+{"message":"    info","level":"info"}
+{"message":"    warn","level":"warn"}
+{"message":"   error","level":"error"}
+{"level":"info","message":"    info from log"}
+{"message":"    {}","level":"info"}
+{"message":"    {\"name\":\"string\",\"login\":\"string\",\"password\":\"string\"}","level":"info"}
+{"message":"    /users","level":"info"}
+{"message":"    info","level":"info"}
+{"message":"    warn","level":"warn"}
+{"message":"   error","level":"error"}
+{"level":"info","message":"    info from log"}
+{"message":"    {}","level":"info"}
+{"message":"    {\"name\":\"string\",\"login\":\"string\",\"password\":\"string\"}","level":"info"}
+{"message":"    [object Object]","level":"info"}
+{"message":"    /users","level":"info"}
+{"message":"    {}","level":"info"}
+{"message":"    {\"name\":\"string\",\"login\":\"string\",\"password\":\"string\"}","level":"info"}
+{"message":"    [object Object]","level":"info"}
+{"message":"    /users","level":"info"}
+{"message":"    {}","level":"info"}
+{"message":"    {}","level":"info"}
+{"message":"    [object Object]","level":"info"}
+{"message":"    /users","level":"info"}
+{"message":"    info","level":"info"}
+{"message":"    warn","level":"warn"}
+{"message":"   error","level":"error"}
+{"level":"info","message":"    info from log"}
+{"message":"    {}","level":"info"}
+{"message":"    {}","level":"info"}
+{"message":"    /users","level":"info"}
+{"message":"    info","level":"info"}
+{"message":"    warn","level":"warn"}
+{"message":"   error","level":"error"}
+{"level":"info","message":"    info from log"}
+{"message":"    info","level":"info"}
+{"message":"    warn","level":"warn"}
+{"message":"   error","level":"error"}
+{"level":"info","message":"    info from log"}
+{"message":"    /users {} {}","level":"info"}
+{"message":"    /users {} {\"name\":\"string\",\"login\":\"string\",\"password\":\"string\"}","level":"info"}
+{"message":"    info","level":"info"}
+{"message":"    warn","level":"warn"}
+{"message":"   error","level":"error"}
+{"level":"info","message":"    info from log"}
+{"message":"    URL: http://localhost:4000/users query parameters:{} body:{\"name\":\"string\",\"login\":\"string\",\"password\":\"string\"}","level":"info"}
+{"message":"    info","level":"info"}
+{"message":"    warn","level":"warn"}
+{"message":"   error","level":"error"}
+{"level":"info","message":"    info from log"}
+{"message":"    URL: http://localhost:4000/users /n query parameters:{} body:{\"name\":\"string\",\"login\":\"string\",\"password\":\"string\"}","level":"info"}
+{"message":"    info","level":"info"}
+{"message":"    warn","level":"warn"}
+{"message":"   error","level":"error"}
+{"level":"info","message":"    info from log"}
+{"message":"    URL: http://localhost:4000/users \n query parameters:{} body:{\"name\":\"string\",\"login\":\"string\",\"password\":\"string\"}","level":"info"}
+{"message":"    info","level":"info"}
+{"message":"    warn","level":"warn"}
+{"message":"   error","level":"error"}
+{"level":"info","message":"    info from log"}
+{"message":"    URL: http://localhost:4000/users\n query parameters:{}\n body:{\"name\":\"string\",\"login\":\"string\",\"password\":\"string\"}","level":"info"}
+{"message":"    info","level":"info"}
+{"message":"    warn","level":"warn"}
+{"message":"   error","level":"error"}
+{"level":"info","message":"    info from log"}
+{"message":"    URL: http://localhost:4000/users\n query parameters:{}\n body:{\"name\":\"string\",\"login\":\"string\",\"password\":\"string\"}","level":"info"}
+{"message":"    info","level":"info"}
+{"message":"    warn","level":"warn"}
+{"message":"   error","level":"error"}
+{"level":"info","message":"    info from log"}
+{"message":"    URL: http://localhost:4000/users\n query parameters:{}\n body:{\"name\":\"string\",\"login\":\"string\",\"password\":\"string\"}","level":"info"}
+{"message":"    info","level":"info"}
+{"message":"    warn","level":"warn"}
+{"message":"   error","level":"error"}
+{"level":"info","message":"    info from log"}
+{"message":"    URL: http://localhost:4000/users\n query parameters:{}\n body:{\"name\":\"string\",\"login\":\"string\",\"password\":\"string\"}","level":"info"}
+{"message":"    URL: http://localhost:4000/users\n query parameters:{}\n body:{\"name\":\"string\",\"login\":\"string\",\"password\":\"string\"}","level":"info"}
+{"message":"    URL: http://localhost:4000/users\n query parameters:{}\n body:{\"name\":\"string\",\"login\":\"string\",\"password\":\"string\"}","level":"info"}
+{"message":"    URL: http://localhost:4000/users\n query parameters:{}\n body:{\"name\":\"string\",\"login\":\"string\",\"password\":\"string\"}","level":"info"}
+{"code":"ERR_INVALID_ARG_TYPE","level":"error","message":"undefined"}
+{"message":"    URL: http://localhost:4000/users\n query parameters:{}\n body:{\"name\":\"string\",\"login\":\"string\",\"password\":\"string\"}","level":"info"}
+{"message":"    URL: http://localhost:4000/users/123\n query parameters:{}\n body:{}","level":"info"}
+{"level":"error","message":"undefined"}
+{"message":"    URL: http://localhost:4000/boards\n query parameters:{}\n body:{}","level":"info"}
+{"message":"    URL: http://localhost:4000/boards/24d43c8c-3254-45b4-83bf-8ce321e41a86/tasks\n query parameters:{}\n body:{}","level":"info"}
+{"message":"    URL: http://localhost:4000/boards/24d43c8c-3254-45b4-83bf-8ce321e41a86/tasks\n query parameters:{}\n body:{}","level":"info"}
+{"message":"    URL: http://localhost:4000/boards/34561e41a86/tasks\n query parameters:{}\n body:{}","level":"info"}
+{"message":"    URL: http://localhost:4000/boards/34561e41a86/tasks\n query parameters:{}\n body:{}","level":"info"}
+{"message":"    URL: http://localhost:4000/boards/2134/tasks/21341234\n query parameters:{}\n body:{}","level":"info"}
+{"message":"    URL: http://localhost:4000/boards/2134/tasks/21341234\n query parameters:{}\n body:{}","level":"info"}
+{"message":"    URL: http://localhost:4000/boards/12341234/tasks\n query parameters:{}\n body:{\"title\":\"string\",\"orde234r\":0,\"description\":\"string\",\"user12341234Id\":\"string\",\"boardId\":\"string\",\"columnId\":\"string\"}","level":"info"}
+{"message":"    URL: http://localhost:4000/boards/12341234/tasks\n query parameters:{}\n body:{\"title\":\"string\",\"orde234r\":0,\"description\":\"string\",\"user12341234Id\":\"string\",\"boardId\":\"string\",\"columnId\":\"string\"}","level":"info"}
+{"message":"    URL: http://localhost:4000/boards/12341234/tasks\n query parameters:{}\n body:{\"title\":\"string\",\"orde234r\":0,\"description\":\"string\",\"user12341234Id\":\"string\",\"boa2134rdId\":\"string\",\"columnId\":\"string\"}","level":"info"}
+{"message":"    URL: http://localhost:4000/boards/12341234/tasks\n query parameters:{}\n body:{\"title\":\"string\",\"orde234r\":0,\"description\":\"string\",\"user12341234Id\":\"string\",\"boa2134rdId\":\"string\",\"columnId\":\"string\"}","level":"info"}
+{"message":"    URL: http://localhost:4000/boards\n query parameters:{}\n body:{\"title\":\"string\",\"columns\":[{\"title\":\"string\",\"order\":0}]}","level":"info"}
+{"message":"    URL: http://localhost:4000/users/123\n query parameters:{}\n body:{}","level":"info"}
+{"level":"error","message":"undefined"}
+{"message":"    URL: http://localhost:4000/users/123\n query parameters:{}\n body:{}","level":"info"}
+{"level":"error","message":"undefined"}
+{"message":"    URL: http://localhost:4000/users/123\n query parameters:{}\n body:{}","level":"info"}
+{"level":"error","message":"undefined"}
+{"message":"    URL: http://localhost:4000/users\n query parameters:{}\n body:{}","level":"info"}
+{"level":"error","message":"undefined"}
+{"message":"    URL: http://localhost:4000/users\n query parameters:{}\n body:{}","level":"info"}
+{"message":"   {}","level":"error"}
+{"level":"error","message":"undefined"}
+{"message":"    URL: http://localhost:4000/users\n query parameters:{}\n body:{}","level":"info"}
+{"level":"error","message":"undefined"}
+{"message":"    URL: http://localhost:4000/users\n query parameters:{}\n body:{}","level":"info"}
+{"message":"    URL: http://localhost:4000/users\n query parameters:{}\n body:{\"name\":\"string\",\"login\":\"string\",\"password\":\"string\"}","level":"info"}
+{"message":"    URL: http://localhost:4000/boards\n query parameters:{}\n body:{}","level":"info"}
+{"message":"    URL: http://localhost:4000/boards\n query parameters:{}\n body:{\"title\":\"string\",\"columns\":[{\"title\":\"string\",\"order\":0}]}","level":"info"}
+{"message":"    URL: http://localhost:4000/boards/34561e41a86/tasks\n query parameters:{}\n body:{}","level":"info"}
+{"message":"    URL: http://localhost:4000/boards/34561e41a86/tasks\n query parameters:{}\n body:{}","level":"info"}
+{"message":"    URL: http://localhost:4000/boards/12341234/tasks\n query parameters:{}\n body:{\"title\":\"string\",\"orde234r\":0,\"description\":\"string\",\"user12341234Id\":\"string\",\"boa2134rdId\":\"string\",\"columnId\":\"string\"}","level":"info"}
+{"message":"    URL: http://localhost:4000/boards/12341234/tasks\n query parameters:{}\n body:{\"title\":\"string\",\"orde234r\":0,\"description\":\"string\",\"user12341234Id\":\"string\",\"boa2134rdId\":\"string\",\"columnId\":\"string\"}","level":"info"}
+{"message":"    URL: /users\n query parameters:{}\n body:{}","level":"info"}
+{"message":"    URL: /users\n query parameters:{}\n body:{}","level":"info"}
+{"message":"   Error","level":"error"}
+{"message":"    URL: /users\n query parameters:{}\n body:{}","level":"info"}
+{"level":"error","message":"undefined"}
+{"message":"    URL: /users\n query parameters:{}\n body:{}","level":"info"}
+{"message":"    URL: /users\n query parameters:{}\n body:{\"name\":\"string\",\"login\":\"string\",\"password\":\"string\"}","level":"info"}
+{"message":"    URL: /users\n query parameters:{}\n body:{}","level":"info"}
+{"level":"error","message":"undefined"}
