@@ -35,11 +35,18 @@ app.use('*', (req, res) => {
 });
 
 app.use((err, req, res, next) => { // eslint-disable-line
-  const { statusCode, message } = err;
-  logger.error(
-    `date: ${new Date()} status code: ${statusCode} message: ${message}`
-  );
-  res.status(statusCode).send(message);
+  try {
+    const { statusCode, message } = err;
+    res.status(statusCode).send(message);
+    logger.error(
+      `date: ${new Date()} status code: ${statusCode} message: ${message}`
+    );
+  } catch (error) {
+    logger.error(
+      `date: ${new Date()} status code: 500 message: Internal Server Error`
+    );
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 process.on('uncaughtException', err => {
