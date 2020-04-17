@@ -2,6 +2,7 @@ const router = require('express').Router();
 const User = require('./user.model');
 const usersService = require('./user.service');
 const tasksService = require('../tasks/task.service');
+const createError = require('../../middleware/error');
 
 router.route('/').get(async (req, res, next) => {
   try {
@@ -19,6 +20,7 @@ router.route('/:id').get(async (req, res, next) => {
     const id = req.params.id;
     const users = await usersService.getAll();
     const user = users.find(item => item.id === id);
+    if (!user) throw createError({ statusCode: 404, message: 'Not found' });
     res.json(User.toResponse(user));
   } catch (err) {
     next(err);
@@ -42,9 +44,11 @@ router.route('/:id').put(async (req, res, next) => {
   try {
     const users = await usersService.getAll();
     const id = req.params.id;
-    users[users.indexOf(users.find(item => item.id === id))] = new User(
-      req.body
-    );
+    const index = users.indexOf(users.find(item => item.id === id));
+    if (index === -1) {
+      throw createError({ statusCode: 404, message: 'Not found' });
+    }
+    users[index] = new User(req.body);
     res.json(users.map(User.toResponse));
   } catch (err) {
     next(err);
@@ -58,6 +62,9 @@ router.route('/:id').delete(async (req, res, next) => {
     const tasks = await tasksService.getAllTasks();
     const id = req.params.id;
     const index = users.indexOf(users.find(item => item.id === id));
+    if (index === -1) {
+      throw createError({ statusCode: 404, message: 'Not found' });
+    }
     const newTasks = tasks.map(item => {
       if (item.userId === users[index].id) item.userId = null;
       return item;

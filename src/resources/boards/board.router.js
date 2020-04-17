@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Board = require('./board.model');
 const boardsService = require('./board.service');
 const tasksService = require('../tasks/task.service');
+const createError = require('../../middleware/error');
 
 router.route('/').get(async (req, res, next) => {
   try {
@@ -30,7 +31,7 @@ router.route('/:id').get(async (req, res, next) => {
     const id = req.params.id;
     const boards = await boardsService.getAllBoards();
     const board = boards.find(item => item.id === id);
-    if (!board) res.status(404).json('Not found');
+    if (!board) throw createError({ statusCode: 404, message: 'Not found' });
     else res.json(board);
   } catch (err) {
     next(err);
@@ -42,9 +43,11 @@ router.route('/:id').put(async (req, res, next) => {
   try {
     const id = req.params.id;
     const boards = await boardsService.getAllBoards();
-    boards[boards.indexOf(boards.find(item => item.id === id))] = new Board(
-      req.body
-    );
+    const index = boards.indexOf(boards.find(item => item.id === id));
+    if (index === -1) {
+      throw createError({ statusCode: 404, message: 'Not found' });
+    }
+    boards[index] = new Board(req.body);
     res.json(boards);
   } catch (err) {
     next(err);
@@ -58,8 +61,9 @@ router.route('/:id').delete(async (req, res, next) => {
     const tasks = await tasksService.getAllTasks();
     const id = req.params.id;
     const index = boards.indexOf(boards.find(item => item.id === id));
-    if (index === -1) res.status(404).json('Not found');
-    else {
+    if (index === -1) {
+      throw createError({ statusCode: 404, message: 'Not found' });
+    } else {
       const newTasks = tasks.filter(item => item.boardId !== boards[index].id);
       tasks.splice(0, tasks.length, ...newTasks);
       boards.splice(index, 1);
