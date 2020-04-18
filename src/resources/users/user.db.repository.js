@@ -17,7 +17,7 @@ const updateUser = async userToUpdate => {
 };
 
 const deleteUser = async id => {
-  return User.deleteOne({ _id: id });
+  return (await User.deleteOne({ _id: id })).deletedCount;
 };
 
 module.exports = { getAll, getById, addUser, updateUser, deleteUser };

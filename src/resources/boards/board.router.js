@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const Board = require('./board.model');
 const boardsService = require('./board.service');
-const tasksService = require('../tasks/task.service');
+// const tasksService = require('../tasks/task.service');
 const createError = require('../../middleware/error');
 
 router.route('/').get(async (req, res, next) => {
   try {
     const boards = await boardsService.getAllBoards();
-    res.json(boards);
+    res.json(boards.map(Board.toResponse));
   } catch (err) {
     next(err);
     return;
@@ -16,10 +16,9 @@ router.route('/').get(async (req, res, next) => {
 
 router.route('/').post(async (req, res, next) => {
   try {
-    const boards = await boardsService.getAllBoards();
     const board = new Board(req.body);
-    boards.push(board);
-    res.json(board);
+    const newBoard = await boardsService.addBoard(board);
+    res.json(Board.toResponse(newBoard));
   } catch (err) {
     next(err);
     return;
@@ -29,10 +28,9 @@ router.route('/').post(async (req, res, next) => {
 router.route('/:id').get(async (req, res, next) => {
   try {
     const id = req.params.id;
-    const boards = await boardsService.getAllBoards();
-    const board = boards.find(item => item.id === id);
+    const board = await boardsService.getBoardById(id);
     if (!board) throw createError({ statusCode: 404, message: 'Not found' });
-    else res.json(board);
+    else res.json(Board.toResponse(board));
   } catch (err) {
     next(err);
     return;
@@ -41,14 +39,11 @@ router.route('/:id').get(async (req, res, next) => {
 
 router.route('/:id').put(async (req, res, next) => {
   try {
-    const id = req.params.id;
-    const boards = await boardsService.getAllBoards();
-    const index = boards.indexOf(boards.find(item => item.id === id));
-    if (index === -1) {
+    const board = await boardsService.updateBoard({ ...req.body });
+    if (!board) {
       throw createError({ statusCode: 404, message: 'Not found' });
     }
-    boards[index] = new Board(req.body);
-    res.json(boards);
+    res.json('Updated');
   } catch (err) {
     next(err);
     return;
@@ -57,17 +52,12 @@ router.route('/:id').put(async (req, res, next) => {
 
 router.route('/:id').delete(async (req, res, next) => {
   try {
-    const boards = await boardsService.getAllBoards();
-    const tasks = await tasksService.getAllTasks();
     const id = req.params.id;
-    const index = boards.indexOf(boards.find(item => item.id === id));
-    if (index === -1) {
+    const board = await boardsService.deleteBoard(id);
+    if (!board) {
       throw createError({ statusCode: 404, message: 'Not found' });
     } else {
-      const newTasks = tasks.filter(item => item.boardId !== boards[index].id);
-      tasks.splice(0, tasks.length, ...newTasks);
-      boards.splice(index, 1);
-      res.json(boards);
+      res.json(board);
     }
   } catch (err) {
     next(err);

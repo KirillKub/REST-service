@@ -18,7 +18,6 @@ router.route('/:id').get(async (req, res, next) => {
   try {
     const id = req.params.id;
     const user = await usersService.getById(id);
-    console.log(`${user} ${id}`);
     if (!user) throw createError({ statusCode: 404, message: 'Not found' });
     res.json(User.toResponse(user));
   } catch (err) {
