@@ -52,12 +52,12 @@ router.route('/:id').put(async (req, res, next) => {
 router.route('/:id').delete(async (req, res, next) => {
   try {
     const id = req.params.id;
+    console.log(id);
     const board = await boardsService.deleteBoard(id);
-    console.log(board);
     if (!board) {
       throw createError({ statusCode: 404, message: 'Not found' });
     } else {
-      res.json(board);
+      res.json('Deleted');
     }
   } catch (err) {
     next(err);
