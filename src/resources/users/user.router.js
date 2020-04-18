@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const User = require('./user.model');
 const usersService = require('./user.service');
-// const tasksService = require('../tasks/task.service');
 const createError = require('../../middleware/error');
 
 router.route('/').get(async (req, res, next) => {
@@ -41,7 +40,7 @@ router.route('/:id').put(async (req, res, next) => {
   try {
     const id = req.params.id;
     const user = await usersService.updateUser({ id, ...req.body });
-    if (!user) {
+    if (!user.n) {
       throw createError({ statusCode: 404, message: 'Not found' });
     }
     res.json(User.toResponse(user));

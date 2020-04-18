@@ -7,7 +7,7 @@ router.route('/:id/tasks').get(async (req, res, next) => {
   try {
     const id = req.params.id;
     const tasks = await tasksService.getAllTasks(id);
-    if (!tasks) {
+    if (!tasks.length) {
       throw createError({ statusCode: 404, message: 'Not found' });
     }
     res.json(tasks.map(Task.toResponse));
@@ -45,7 +45,6 @@ router.route('/:id/tasks/:taskID').put(async (req, res, next) => {
   try {
     const id = req.params.taskID;
     const task = await tasksService.updateTask({ id, ...req.body });
-    console.log(task);
     if (!task.n) {
       throw createError({ statusCode: 404, message: 'Not found' });
     }

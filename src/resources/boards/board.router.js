@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const Board = require('./board.model');
 const boardsService = require('./board.service');
-// const tasksService = require('../tasks/task.service');
 const createError = require('../../middleware/error');
 
 router.route('/').get(async (req, res, next) => {
@@ -40,7 +39,7 @@ router.route('/:id').get(async (req, res, next) => {
 router.route('/:id').put(async (req, res, next) => {
   try {
     const board = await boardsService.updateBoard({ ...req.body });
-    if (!board) {
+    if (!board.n) {
       throw createError({ statusCode: 404, message: 'Not found' });
     }
     res.json('Updated');
@@ -54,6 +53,7 @@ router.route('/:id').delete(async (req, res, next) => {
   try {
     const id = req.params.id;
     const board = await boardsService.deleteBoard(id);
+    console.log(board);
     if (!board) {
       throw createError({ statusCode: 404, message: 'Not found' });
     } else {
