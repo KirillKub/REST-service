@@ -1,4 +1,5 @@
 const User = require('./user.model');
+const bcrypt = require('bcrypt');
 
 const getAll = async () => {
   return User.find({});
@@ -9,7 +10,10 @@ const getById = async id => {
 };
 
 const addUser = async user => {
-  return User.create(user);
+  const { name, login, id, password } = user;
+  const saltRounds = 10;
+  const hash = bcrypt.hashSync(password, saltRounds); // eslint-disable-line
+  return User.create({ name, login, id, password: hash });
 };
 
 const updateUser = async userToUpdate => {

@@ -5,8 +5,11 @@ const YAML = require('yamljs');
 const userRouter = require('./resources/users/user.router');
 const boardRouter = require('./resources/boards/board.router');
 const taskRouter = require('./resources/tasks/task.router');
+const loginRouter = require('./resources/login/login.router');
 const { logger } = require('./middleware/winston/index');
 const loggingMiddleware = require('./middleware/logging');
+const jwt = require('jsonwebtoken');
+const { JWT_SECRET_KEY } = require('./common/config.js');
 
 const app = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
@@ -14,7 +17,6 @@ const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
 app.use(express.json());
 
 app.use(loggingMiddleware);
-
 app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 app.use('/', (req, res, next) => {
@@ -25,10 +27,27 @@ app.use('/', (req, res, next) => {
   next();
 });
 
+app.use('/login', loginRouter);
+app.use((req, res, next) => {
+  if (typeof req.headers.authorization !== 'undefined') {
+    const token = req.headers.authorization.split(' ')[1];
+    jwt.verify(token, JWT_SECRET_KEY, { algorithm: 'HS256' }, err => {
+      if (err) {
+        res.status(401).json({ error: 'Unauthorized' });
+        logger.error(
+          `date: ${new Date()} status code: 401 message: Unauthorized`
+        );
+      }
+      return next();
+    });
+  } else {
+    res.status(401).json({ error: 'Unauthorized' });
+    logger.error(`date: ${new Date()} status code: 401 message: Unauthorized`);
+  }
+});
 app.use('/users', userRouter);
 app.use('/boards', boardRouter);
 app.use('/boards', taskRouter);
-
 app.use('*', (req, res) => {
   logger.warn('Bad request');
   res.status(400).send('Bad request');
